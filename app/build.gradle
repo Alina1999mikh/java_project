@@ -10,9 +10,10 @@ plugins {
 group = 'com.github.alina1999mikh'
 // версия приложения.
 version = '0.0.1'
+sourceCompatibility ='15'
 
 // версия java под которую собираешь проект
-sourceCompatibility = '14'
+
 
 // это репозитории в которых будут искаться зависимости
 // jcenter - централизованный репозиторий от jfrog, его обычно для всего хватает
@@ -32,4 +33,4 @@ dependencies {
 // здесь настраиваем тесты, чтобы gradle использовал junit5
 test {
     useJUnitPlatform()
-}   
+}
