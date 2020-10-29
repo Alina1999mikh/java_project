@@ -32,8 +32,4 @@ dependencies {
 // здесь настраиваем тесты, чтобы gradle использовал junit5
 test {
     useJUnitPlatform()
-}
-application {
-    // Define the main class for the application.
-    mainClass = 'project.App'
-}
+}   
