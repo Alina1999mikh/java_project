@@ -1,0 +1,36 @@
+// плагины, которые используются для сбороки
+// обычно просто находишь в интернете нужный плагин при необходимости - читаешь как подключить и использовать в README
+plugins {
+    id 'org.springframework.boot' version '2.3.3.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+// у приложений есть группа (типа неймспейса) и имя самого приложения. Группа обычно подразумевает твой сайт
+// некоторые у кого сайта нет github свой используют
+group = 'com.github.alina1999mikh'
+// версия приложения.
+version = '0.0.1'
+sourceCompatibility ='15'
+
+// версия java под которую собираешь проект
+
+
+// это репозитории в которых будут искаться зависимости
+// jcenter - централизованный репозиторий от jfrog, его обычно для всего хватает
+repositories {
+    jcenter()
+}
+
+dependencies {
+    // подключаем спринг стартер для веба, там куча зависимостей прилетает для вебразработки
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // это нужно для тестирования веб-приложений
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+// здесь настраиваем тесты, чтобы gradle использовал junit5
+test {
+    useJUnitPlatform()
+}
