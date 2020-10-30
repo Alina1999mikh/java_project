@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 @RestController
 public class HelloController {
@@ -19,6 +17,13 @@ public class HelloController {
     private Map<String, String> hashMap = new HashMap<>();
     private int lengthShortUrl = 1;
     private char[] alphabet = "abcdefghijklmnopqrstuvwxyz1234567890".toCharArray();
+    private ArrayList<Integer> list = initializeList();
+
+    private ArrayList<Integer> initializeList() {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < lengthShortUrl; i++) list.add(-1);
+        return list;
+    }
 
     private String getShortUrl(String value) {
         for (Map.Entry<String, String> entry : hashMap.entrySet()) {
@@ -29,29 +34,41 @@ public class HelloController {
         return null;
     }
 
-    private String randomUrl() {
-        StringBuilder sb = new StringBuilder(lengthShortUrl);
-        Random random = new Random();
-        for (int i = 0; i < lengthShortUrl; i++) {
-            char symbol = alphabet[random.nextInt(alphabet.length)];
-            sb.append(symbol);
+    private void doIncreaseUrl(int index) {
+
+        int thisIndex = list.size() - index;
+        if (list.get(thisIndex) == alphabet.length - 1)//если индекс юрл равен последнему индексу (букве) алфавита и требует замены ранее стоящего
+        {
+            list.set(thisIndex, 0);
+            if (thisIndex == 0 && list.get(thisIndex) == alphabet[alphabet.length-1]) {  //проверка требует ли увеличения длины ссылк
+                lengthShortUrl++;
+                list.add(0);
+                return;
+            }
+            doIncreaseUrl(index+1);
+        } else {
+            list.set(thisIndex, list.get(thisIndex) + 1);
         }
-        return sb.toString();
+    }
+
+    private String createNewUrl() {
+        doIncreaseUrl(1);
+        char[] chars = new char[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            chars[i] = alphabet[list.get(i)];
+        }
+        return new String(chars);
     }
 
     private String createShortUrl(String fullUrl) {  //создаем урл короткий
         String shortUrl = getShortUrl(fullUrl);      // проверяем есть ли такая ссылка уже, чтобы выдать готовый урл а не новый
         if (shortUrl == null) {
-            do {
-                shortUrl = randomUrl();
-            }
-            while (hashMap.get(shortUrl) != null);   //рандомим урл пока он не будет уникальный (вдруг повторяется)
-            return shortUrl;
+            return createNewUrl();
         } else return shortUrl;
     }
 
-    private String addToMap(String fullUrl) { //возвращает shortUrl с которым добавили
-        String shortUrl = createShortUrl(fullUrl);
+    private String connectToMap(String fullUrl) { //возвращает shortUrl с которым добавили
+        String shortUrl=createShortUrl(fullUrl);
         hashMap.put(shortUrl, fullUrl);
         return shortUrl;
     }
@@ -70,7 +87,6 @@ public class HelloController {
 
     @RequestMapping(value = "/full", method = RequestMethod.GET)
     public String getShortLink(@RequestParam String Q) {
-        String shortUrl = addToMap(Q);
-        return "http://localhost:8080/short?q=" + shortUrl;
+        return "http://localhost:8080/short?q=" + connectToMap(Q);
     }
 }
