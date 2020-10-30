@@ -17,8 +17,8 @@ import java.util.Random;
 public class HelloController {
 
     private Map<String, String> hashMap = new HashMap<>();
-    private int lengthShortUrl = 4;
-    char[] chars = "abcdefghijklmnopqrstuvwxyz1234567890".toCharArray();
+    private int lengthShortUrl = 1;
+    private char[] alphabet = "abcdefghijklmnopqrstuvwxyz1234567890".toCharArray();
 
     private String getShortUrl(String value) {
         for (Map.Entry<String, String> entry : hashMap.entrySet()) {
@@ -33,8 +33,8 @@ public class HelloController {
         StringBuilder sb = new StringBuilder(lengthShortUrl);
         Random random = new Random();
         for (int i = 0; i < lengthShortUrl; i++) {
-            char c = chars[random.nextInt(chars.length)];
-            sb.append(c);
+            char symbol = alphabet[random.nextInt(alphabet.length)];
+            sb.append(symbol);
         }
         return sb.toString();
     }
