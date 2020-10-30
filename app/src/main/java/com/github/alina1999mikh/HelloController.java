@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class HelloController {
@@ -40,12 +42,12 @@ public class HelloController {
         if (list.get(thisIndex) == alphabet.length - 1)//если индекс юрл равен последнему индексу (букве) алфавита и требует замены ранее стоящего
         {
             list.set(thisIndex, 0);
-            if (thisIndex == 0 && list.get(thisIndex) == alphabet[alphabet.length-1]) {  //проверка требует ли увеличения длины ссылк
+            if (thisIndex == 0 && list.get(thisIndex) == alphabet[alphabet.length - 1]) {  //проверка требует ли увеличения длины ссылк
                 lengthShortUrl++;
                 list.add(0);
                 return;
             }
-            doIncreaseUrl(index+1);
+            doIncreaseUrl(index + 1);
         } else {
             list.set(thisIndex, list.get(thisIndex) + 1);
         }
@@ -68,7 +70,7 @@ public class HelloController {
     }
 
     private String connectToMap(String fullUrl) { //возвращает shortUrl с которым добавили
-        String shortUrl=createShortUrl(fullUrl);
+        String shortUrl = createShortUrl(fullUrl);
         hashMap.put(shortUrl, fullUrl);
         return shortUrl;
     }
