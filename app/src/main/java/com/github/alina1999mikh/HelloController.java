@@ -75,20 +75,17 @@ public class HelloController {
         return shortUrl;
     }
 
-    @RequestMapping(value = "/whoami", method = RequestMethod.GET)
-    public String index(@RequestParam String name) {
-        return "You are " + name;
-    }
-
     @RequestMapping(value = "/short", method = RequestMethod.GET)
     public ResponseEntity getFullLink(@RequestParam String q) {
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(URI.create("http://localhost:8080/full?Q=" + hashMap.get(q)));
-        return new ResponseEntity<>(headers, HttpStatus.MOVED_PERMANENTLY);
+        headers.setLocation(URI.create(hashMap.get(q)));
+        return new ResponseEntity<>(headers, HttpStatus.FOUND);
     }
 
-    @RequestMapping(value = "/full", method = RequestMethod.GET)
-    public String getShortLink(@RequestParam String Q) {
-        return "http://localhost:8080/short?q=" + connectToMap(Q);
+    @RequestMapping(value = "/full", method = RequestMethod.POST)
+    public Link getShortLink(@RequestParam String Q) {
+        Link shortLink = new Link();
+        shortLink.setLink("http://localhost:8080/short?q=" + connectToMap(Q));
+        return shortLink;
     }
 }

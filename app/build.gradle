@@ -23,6 +23,11 @@ repositories {
 
 dependencies {
     // подключаем спринг стартер для веба, там куча зависимостей прилетает для вебразработки
+    compileOnly 'org.projectlombok: lombok: 1.18.16'
+    annotationProcessor 'org.projectlombok: lombok: 1.18.16'
+
+    testCompileOnly 'org.projectlombok: lombok: 1.18.16'
+    testAnnotationProcessor 'org.projectlombok: lombok: 1.18.16'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     // это нужно для тестирования веб-приложений
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
