@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-public class HelloController {
+public class MainController {
 
     private Map<String, String> hashMap = new HashMap<>();
     private int lengthShortUrl = 1;
