@@ -20,7 +20,7 @@ public class MainController {
     @RequestMapping(value = "/short", method = RequestMethod.GET)
     public ResponseEntity getFullLink(@RequestParam String q) {
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(URI.create(String.valueOf(shortenLinkProcess.getHashMap().get(new Link(q)))));
+        headers.setLocation(URI.create(shortenLinkProcess.getHashMap().get(new Link(q)).getLink()));
         return new ResponseEntity<>(headers, HttpStatus.FOUND);
     }
 
