@@ -9,4 +9,9 @@ public class Link {
     public Link(String link) {
         this.link = link;
     }
+
+    @Override
+    public String toString() {
+        return link;
+    }
 }
