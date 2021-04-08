@@ -10,7 +10,7 @@ plugins {
 group = 'com.github.alina1999mikh'
 // версия приложения.
 version = '0.0.1'
-sourceCompatibility ='15'
+sourceCompatibility ='11'
 
 // версия java под которую собираешь проект
 
