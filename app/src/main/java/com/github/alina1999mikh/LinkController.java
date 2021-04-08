@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.net.URI;
 
 @RestController
-public class MainController {
+public class LinkController {
 
     private ShortenLink shortenLinkProcess = new ShortenLink();
 
     @RequestMapping(value = "/short", method = RequestMethod.GET)
     public ResponseEntity getFullLink(@RequestParam String q) {
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(URI.create(shortenLinkProcess.getHashMap().get(new Link(q)).getLink()));
+        headers.setLocation(URI.create(shortenLinkProcess.getMap().getHashMap().get(new Link(q)).getLink()));
         return new ResponseEntity<>(headers, HttpStatus.FOUND);
     }
 

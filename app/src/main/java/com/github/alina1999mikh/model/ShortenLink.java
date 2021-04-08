@@ -11,7 +11,7 @@ public class ShortenLink {
     @Setter
     private static char[] alphabet = "abcdefghijklmnopqrstuvwxyz1234567890".toCharArray();
     @Getter
-    private Map<Link, Link> hashMap = new HashMap<>();
+    private LinkMap map = new LinkMap();
     private ArrayList<Integer> list;
     private int lengthShortUrl = 1;
 
@@ -21,7 +21,7 @@ public class ShortenLink {
 
     public Link connectToMap(Link fullUrl) { //возвращает shortUrl с которым добавили
         Link shortUrl = createShortUrl(fullUrl);
-        hashMap.put(shortUrl, fullUrl);
+        map.put(shortUrl, fullUrl);
         return shortUrl;
     }
 
@@ -32,12 +32,7 @@ public class ShortenLink {
     }
 
     private Link getShortUrl(Link value) {
-        for (Map.Entry<Link, Link> entry : hashMap.entrySet()) {
-            if (entry.getValue().equals(value)) {
-                return entry.getKey();
-            }
-        }
-        return null;
+        return map.getKey(value);
     }
 
     private void doIncreaseUrl(int index) {
