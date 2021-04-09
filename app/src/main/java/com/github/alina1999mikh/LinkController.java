@@ -18,17 +18,19 @@ import java.net.URI;
 @RestController
 public class LinkController {
 
-    private GetShortLink getShortLinkProcess = new GetShortLink();
+    GetShortLink getShortLinkProcess=new GetShortLink();
+    GetFullLink getFullLinkProcess=new GetFullLink();
 
-    @RequestMapping(value = "/short", method = RequestMethod.GET)
+  @RequestMapping(value = "/short", method = RequestMethod.GET)
     public ResponseEntity getFullLink(@RequestParam String q) {
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(URI.create(GetFullLink.get(new Link(q)).getLink()));
+                headers.setLocation(URI.create(getFullLinkProcess.get(new Link(q)).getLink()));
+
         return new ResponseEntity<>(headers, HttpStatus.FOUND);
     }
 
     @RequestMapping(value = "/full", method = RequestMethod.POST)
     public Link getShortLink(@RequestParam String Q) {
-        return new Link("http://localhost:8080/short?q=" + getShortLinkProcess.get(new Link(Q)).getLink());
+        return new Link("https://8080-blush-finch-1wz6py5g.ws-eu03.gitpod.io/short?q=" + getShortLinkProcess.get(new Link(Q)).getLink());
     }
 }
