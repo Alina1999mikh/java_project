@@ -1,5 +1,6 @@
-package com.github.alina1999mikh.model;
+package com.github.alina1999mikh.linkService.LinksReprository;
 
+import com.github.alina1999mikh.model.Link;
 import lombok.Data;
 import lombok.Getter;
 
@@ -7,18 +8,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public class LinkMap {
+public class LinksMap {
     @Getter
-    private Map<Link, Link> hashMap = new HashMap<>();
+    private static Map<Link, Link> hashMap = new HashMap<>();
 
-    public LinkMap() {
-    }
-
-    public void put(Link shortUrl, Link fullUrl) {
+    public static void put(Link shortUrl, Link fullUrl) {
         hashMap.put(shortUrl, fullUrl);
     }
 
-    public Link getKey(Link value) {
+    public static Link getKey(Link value) {
         for (Map.Entry<Link, Link> entry : hashMap.entrySet()) {
             if (entry.getValue().equals(value)) {
                 return entry.getKey();
