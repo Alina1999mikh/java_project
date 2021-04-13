@@ -18,13 +18,13 @@ import java.net.URI;
 @RestController
 public class LinkController {
 
-    GetShortLink getShortLinkProcess=new GetShortLink();
-    GetFullLink getFullLinkProcess=new GetFullLink();
+    GetShortLink getShortLinkProcess = new GetShortLink();
+    GetFullLink getFullLinkProcess = new GetFullLink();
 
-  @RequestMapping(value = "/short", method = RequestMethod.GET)
+    @RequestMapping(value = "/short", method = RequestMethod.GET)
     public ResponseEntity getFullLink(@RequestParam String q) {
         HttpHeaders headers = new HttpHeaders();
-                headers.setLocation(URI.create(getFullLinkProcess.get(new Link(q)).getLink()));
+        headers.setLocation(URI.create(getFullLinkProcess.get(new Link(q)).getLink()));
 
         return new ResponseEntity<>(headers, HttpStatus.FOUND);
     }
