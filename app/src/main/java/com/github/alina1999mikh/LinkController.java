@@ -31,6 +31,6 @@ public class LinkController {
 
     @RequestMapping(value = "/full", method = RequestMethod.POST)
     public Link getShortLink(@RequestParam String Q) {
-        return new Link("https://8080-white-parakeet-s5jnd202.ws-eu03.gitpod.io/short?q=" + getShortLinkProcess.get(new Link(Q)).getLink());
+        return new Link("http://localhost:8080/short?q=" + getShortLinkProcess.get(new Link(Q)).getLink());
     }
 }
