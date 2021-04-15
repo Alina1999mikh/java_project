@@ -1,5 +1,6 @@
-package com.github.alina1999mikh.linkService;
+package com.github.alina1999mikh.linkService.GetLink;
 
+import com.github.alina1999mikh.model.Alphabet;
 import com.github.alina1999mikh.model.Link;
 import lombok.Setter;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 
 public class ShortStringGenerationService {
     @Setter
-    private static char[] alphabet = "abcdefghijklmnopqrstuvwxyz1234567890".toCharArray();
+    private char[] alphabet = Alphabet.getAlphabet();
 
     private static ArrayList<Integer> list;  //храним номера букв из ссылок-для увеличения
     private static int lengthShortUrl = 1;
@@ -16,7 +17,7 @@ public class ShortStringGenerationService {
         list = initializeList();
     }
 
-    protected static Link createNewUrl() {
+    protected Link createNewUrl() {
         doIncreaseUrl(1);
         char[] chars = new char[list.size()];
         for (int i = 0; i < list.size(); i++) {
@@ -31,7 +32,7 @@ public class ShortStringGenerationService {
         return list;
     }
 
-    private static void doIncreaseUrl(int index) {
+    private void doIncreaseUrl(int index) {
 
         int thisIndex = list.size() - index;
         if (list.get(thisIndex) == alphabet.length - 1)//если индекс юрл равен последнему индексу (букве) алфавита и требует замены ранее стоящего

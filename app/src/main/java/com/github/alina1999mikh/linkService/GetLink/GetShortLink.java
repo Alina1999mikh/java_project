@@ -1,4 +1,4 @@
-package com.github.alina1999mikh.linkService;
+package com.github.alina1999mikh.linkService.GetLink;
 
 import com.github.alina1999mikh.linkService.LinksReprository.LinksMapRepository;
 import com.github.alina1999mikh.model.Link;
