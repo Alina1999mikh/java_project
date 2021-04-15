@@ -8,15 +8,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public class LinksMap {
+public class LinksMapRepository implements LinksRepository {
     @Getter
-    private static Map<Link, Link> hashMap = new HashMap<>();
+    private Map<Link, Link> hashMap = new HashMap<>();
 
-    public static void put(Link shortUrl, Link fullUrl) {
+    public void put(Link shortUrl, Link fullUrl) {
         hashMap.put(shortUrl, fullUrl);
     }
 
-    public static Link getKey(Link value) {
+    public Link getKey(Link value) {
         for (Map.Entry<Link, Link> entry : hashMap.entrySet()) {
             if (entry.getValue().equals(value)) {
                 return entry.getKey();
