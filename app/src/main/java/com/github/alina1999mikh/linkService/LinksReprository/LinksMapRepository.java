@@ -12,11 +12,13 @@ public class LinksMapRepository implements LinksRepository {
     @Getter
     private Map<Link, Link> hashMap = new HashMap<>();
 
+    @Override
     public void put(Link shortUrl, Link fullUrl) {
         hashMap.put(shortUrl, fullUrl);
     }
 
-    public Link getKey(Link value) {
+    @Override
+    public Link getMatch(Link value) {
         for (Map.Entry<Link, Link> entry : hashMap.entrySet()) {
             if (entry.getValue().equals(value)) {
                 return entry.getKey();

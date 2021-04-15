@@ -28,6 +28,6 @@ public class GetShortLink implements GetLink {
     }
 
     private Link getExistUrl(Link value) {
-        return linksMap.getKey(value);
+        return linksMap.getMatch(value);
     }
 }
