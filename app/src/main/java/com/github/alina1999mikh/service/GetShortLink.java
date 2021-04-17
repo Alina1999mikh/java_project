@@ -1,7 +1,7 @@
-package com.github.alina1999mikh.linkService.GetLink;
+package com.github.alina1999mikh.service;
 
-import com.github.alina1999mikh.linkService.LinksReprository.LinksMapRepository;
 import com.github.alina1999mikh.model.Link;
+import com.github.alina1999mikh.repository.LinksMapRepository;
 
 public class GetShortLink implements GetLink {
 
@@ -23,11 +23,11 @@ public class GetShortLink implements GetLink {
         if (shortUrl == null) {
             shortUrl = shortStringGenerationServiceProcess.createNewUrl();
         }
-        linksMap.put(shortUrl, fullUrl);
+        linksMap.save(shortUrl, fullUrl);
         return shortUrl;
     }
 
     private Link getExistUrl(Link value) {
-        return linksMap.getMatch(value);
+        return linksMap.findBy(value);
     }
 }

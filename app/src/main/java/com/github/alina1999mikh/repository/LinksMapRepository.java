@@ -1,4 +1,4 @@
-package com.github.alina1999mikh.linkService.LinksReprository;
+package com.github.alina1999mikh.repository;
 
 import com.github.alina1999mikh.model.Link;
 import lombok.Data;
@@ -13,12 +13,12 @@ public class LinksMapRepository implements LinksRepository {
     private Map<Link, Link> hashMap = new HashMap<>();
 
     @Override
-    public void put(Link shortUrl, Link fullUrl) {
+    public void save(Link shortUrl, Link fullUrl) {
         hashMap.put(shortUrl, fullUrl);
     }
 
     @Override
-    public Link getMatch(Link value) {
+    public Link findBy(Link value) {
         for (Map.Entry<Link, Link> entry : hashMap.entrySet()) {
             if (entry.getValue().equals(value)) {
                 return entry.getKey();

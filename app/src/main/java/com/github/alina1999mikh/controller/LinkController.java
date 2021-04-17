@@ -1,9 +1,9 @@
-package com.github.alina1999mikh;
+package com.github.alina1999mikh.controller;
 
-import com.github.alina1999mikh.linkService.GetLink.GetFullLink;
-import com.github.alina1999mikh.linkService.GetLink.GetShortLink;
-import com.github.alina1999mikh.linkService.LinksReprository.LinksMapRepository;
 import com.github.alina1999mikh.model.Link;
+import com.github.alina1999mikh.repository.LinksMapRepository;
+import com.github.alina1999mikh.service.GetFullLink;
+import com.github.alina1999mikh.service.GetShortLink;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

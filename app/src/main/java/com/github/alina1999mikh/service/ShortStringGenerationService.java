@@ -1,4 +1,4 @@
-package com.github.alina1999mikh.linkService.GetLink;
+package com.github.alina1999mikh.service;
 
 import com.github.alina1999mikh.model.Alphabet;
 import com.github.alina1999mikh.model.Link;

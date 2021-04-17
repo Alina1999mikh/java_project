@@ -1,7 +1,7 @@
-package com.github.alina1999mikh.linkService.GetLink;
+package com.github.alina1999mikh.service;
 
-import com.github.alina1999mikh.linkService.LinksReprository.LinksMapRepository;
 import com.github.alina1999mikh.model.Link;
+import com.github.alina1999mikh.repository.LinksMapRepository;
 
 public class GetFullLink implements GetLink {
     LinksMapRepository linksMap;
