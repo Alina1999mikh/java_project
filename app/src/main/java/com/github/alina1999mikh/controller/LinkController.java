@@ -2,8 +2,7 @@ package com.github.alina1999mikh.controller;
 
 import com.github.alina1999mikh.model.Link;
 import com.github.alina1999mikh.repository.LinksMapRepository;
-import com.github.alina1999mikh.service.GetFullLink;
-import com.github.alina1999mikh.service.GetShortLink;
+import com.github.alina1999mikh.service.GetLink;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,18 +17,17 @@ import java.net.URI;
 public class LinkController {
 
     LinksMapRepository linksMap = new LinksMapRepository();
-    GetShortLink getShortLinkProcess = new GetShortLink(linksMap);
-    GetFullLink getFullLinkProcess = new GetFullLink(linksMap);
+    GetLink getLinkProcess = new GetLink(linksMap);
 
     @RequestMapping(value = "/short", method = RequestMethod.GET)
     public ResponseEntity getFullLink(@RequestParam String q) {
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(URI.create(getFullLinkProcess.get(new Link(q)).getLink()));
+        headers.setLocation(URI.create(getLinkProcess.getFullLink(new Link(q)).getLink()));
         return new ResponseEntity<>(headers, HttpStatus.FOUND);
     }
 
     @RequestMapping(value = "/full", method = RequestMethod.POST)
     public Link getShortLink(@RequestParam String Q) {
-        return new Link("http://localhost:8080/short?q=" + getShortLinkProcess.get(new Link(Q)).getLink());
+        return new Link("http://localhost:8080/short?q=" + getLinkProcess.getShortLink(new Link(Q)).getLink());
     }
 }
