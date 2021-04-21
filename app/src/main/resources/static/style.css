@@ -1,0 +1,57 @@
+h1 {
+    font-family: Revalia, serif;
+    font-size: 48px;
+    line-height: 60px;
+    color: #34547A;
+}
+
+body {
+    background-color: #EEEFF1;
+}
+
+header {
+    width: 70%;
+    margin-left: 15%;
+    display: flex;
+}
+
+.header_logo {
+    cursor: pointer;
+    width: 100%;
+}
+
+.header_text {
+    cursor: pointer;
+    font-family: Roboto, serif;
+    font-size: 12px;
+    margin-left: -10px;
+    margin-top: 0;
+    line-height: 3px;
+    color: #727272;
+}
+
+.process {
+    width: 100%;
+    background-color: white;
+}
+
+.process_input {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.process_label {
+    cursor: pointer;
+    font-family: Roboto, serif;
+    font-size: 14px;
+    width: 100%;
+    color: #34547A;
+}
+
+.process_send {
+    font-size: 14px;
+    font-family: Almost, serif;
+    color: #2E2E2E;
+    margin-left: 89%;
+}

@@ -1,15 +1,42 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="English">
+
 <head>
-    <meta charset="utf-8">
-    <title>Укорачиватель ссылок</title>
+    <title>shorten link</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Revalia&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital,wght@0,100;0,400;1,400&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital@0;1&display=swap"
+          rel="stylesheet">
 </head>
+
 <body>
-<form action="/full" method="post">
-    <p><label> Введите ссылку
-        <input name="Q" type="text">
-    </label>
-    <p><input type="submit"></p>
-</form>
+<header>
+    <div class="header_logo">
+        <h1>
+            SL
+            <p class="header_text">
+                getting a short link
+            </p>
+        </h1>
+    </div>
+</header>
+
+<main>
+    <section class="process">
+        <div class="process_input">
+            <form action="/full" method="post">
+                <div class="process_label">
+                    <p><label>
+                        Link to shorten:
+                        <input name="Q" type="text" size="55">
+                    </label>
+                </div>
+                <p><input class="process_send" type="submit" value="Send"></p>
+            </form>
+        </div>
+    </section>
+</main>
 </body>
 </html>
