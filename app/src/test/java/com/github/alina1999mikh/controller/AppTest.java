@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -19,24 +20,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class AppTest {
     @Autowired
     private MockMvc mockMvc;
-//    @Test
-//    @DisplayName("FullTest")
-//    void shouldContactsGetSuccess() throws Exception {
-//        // when
-//        mockMvc.perform(
-//                post("/full")
-//                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-//                .content("Q=https://google.com"))
-//                .andExpect(status().isOk());
-//    }
-
     @Test
-    @DisplayName("ShortTest")
-    void shortTest() throws Exception {
+    @DisplayName("FullTest")
+    void shouldContactsGetSuccess() throws Exception {
+        // when
         mockMvc.perform(
-                get("/short")
+                post("/full")
                         .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                        .content("q=a"))
+                .content("Q=https://google.com"))
                 .andExpect(status().isOk());
     }
+
+//    @Test
+//    @DisplayName("ShortTest")
+//    void shortTest() throws Exception {
+//        mockMvc.perform(
+//                get("/short")
+//                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+//                        .content("Q=https://google.com"))
+//                .andExpect(status().isOk());
+//    }
 }
