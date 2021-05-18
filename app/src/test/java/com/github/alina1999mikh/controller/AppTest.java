@@ -1,5 +1,9 @@
 package com.github.alina1999mikh.controller;
 
+import com.github.alina1999mikh.model.Link;
+import com.github.alina1999mikh.repository.LinksMapRepository;
+import com.github.alina1999mikh.service.GetLink;
+import org.apache.juli.logging.Log;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,24 +24,28 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class AppTest {
     @Autowired
     private MockMvc mockMvc;
+
     @Test
-    @DisplayName("FullTest")
-    void shouldContactsGetSuccess() throws Exception {
-        // when
-        mockMvc.perform(
+    @DisplayName("getShortLinkTest")
+    void getShortLinkTest() throws Exception {
+     mockMvc.perform(
                 post("/full")
                         .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .content("Q=https://google.com"))
+                        .content("Q=https://www.google.ru/"))
                 .andExpect(status().isOk());
     }
 
-//    @Test
-//    @DisplayName("ShortTest")
-//    void shortTest() throws Exception {
-//        mockMvc.perform(
-//                get("/short")
-//                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-//                        .content("Q=https://google.com"))
-//                .andExpect(status().isOk());
-//    }
+    @Test
+    @DisplayName("getFullLinkTest")
+    void getFullLinkTest() throws Exception {
+        LinksMapRepository linksMap = new LinksMapRepository();
+        GetLink getLinkProcess = new GetLink(linksMap);
+        Link link = new Link(getLinkProcess.getShortLink(new Link("https://www.google.ru/")).getLink());
+
+        mockMvc.perform(
+                get("/short")
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .content("q=" + link.getLink()))
+                .andExpect(status().isFound());
+    }
 }
