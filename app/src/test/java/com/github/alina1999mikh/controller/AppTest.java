@@ -28,7 +28,7 @@ public class AppTest {
     @Test
     @DisplayName("getShortLinkTest")
     void getShortLinkTest() throws Exception {
-     mockMvc.perform(
+        mockMvc.perform(
                 post("/full")
                         .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                         .content("Q=https://www.google.ru/"))
@@ -38,14 +38,13 @@ public class AppTest {
     @Test
     @DisplayName("getFullLinkTest")
     void getFullLinkTest() throws Exception {
-        LinksMapRepository linksMap = new LinksMapRepository();
-        GetLink getLinkProcess = new GetLink(linksMap);
-        Link link = new Link(getLinkProcess.getShortLink(new Link("https://www.google.ru/")).getLink());
+        LinkController linkController = new LinkController();
+        String link = linkController.getShortLink("https://www.google.ru/").getLink();
 
         mockMvc.perform(
                 get("/short")
                         .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                        .content("q=" + link.getLink()))
+                        .content(link.substring(link.lastIndexOf("/short?")+7)))
                 .andExpect(status().isFound());
     }
 }
