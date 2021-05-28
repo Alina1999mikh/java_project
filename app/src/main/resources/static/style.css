@@ -30,28 +30,39 @@ header {
     color: #727272;
 }
 
-.process {
+.full_link_input {
     width: 100%;
     background-color: white;
-}
-
-.process_input {
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
 }
 
-.process_label {
+.full_link_label {
+    cursor: pointer;
+    font-family: Roboto, serif;
+    font-size: 14px;
+    color: #34547A;
+    width: 100%;
+    color: #34547A;
+}
+
+.short_link{
+    width: 100%;
+    background-color: white;
+}
+
+.short_link_output {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.short_link_label {
+    margin: 30px auto 20px 35%;
     cursor: pointer;
     font-family: Roboto, serif;
     font-size: 14px;
     width: 100%;
     color: #34547A;
-}
-
-.process_send {
-    font-size: 14px;
-    font-family: Almost, serif;
-    color: #2E2E2E;
-    margin-left: 89%;
 }

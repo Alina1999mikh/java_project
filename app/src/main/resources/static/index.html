@@ -24,19 +24,37 @@
 </header>
 
 <main>
-    <section class="process">
-        <div class="process_input">
-            <form action="/full" method="post">
-                <div class="process_label">
+    <div class="upload-content">
+        <div class="full_link_input">
+            <form id="multipleUploadForm" name="multipleUploadForm">
+                <div class="full_link_label">
                     <p><label>
                         Link to shorten:
-                        <input name="Q" type="text" size="55">
+                        <input id="inputLink" name="Q" type="text" size="55">
+                        <button type="submit" class="primary submit-btn"> Send</button>
                     </label>
                 </div>
-                <p><input class="process_send" type="submit" value="Send"></p>
             </form>
+            <div class="upload-response">
+                <div id="multipleFileUploadError"></div>
+                <div id="multipleFileUploadSuccess"></div>
+            </div>
         </div>
-    </section>
+    </div>
+    >
 </main>
+
+<section class="short_link">
+    <div class="short_link_output">
+        <div class="short_link_label">
+            <label>
+                Short link:
+                <input type="text" value="" id="shortLink" size="55" readonly>
+                <button class="short_link_button" onclick="myFunction()">Copy text</button>
+            </label>
+        </div>
+    </div>
+</section>
+<script src="main.js"></script>
 </body>
 </html>
