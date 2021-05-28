@@ -1,7 +1,6 @@
 'use strict'
 
 multipleUploadForm.addEventListener('submit', function (event) {
-    const multipleUploadForm = document.querySelector('#multipleUploadForm');
     const inputLink = document.getElementById('inputLink');
     const shortLink = document.getElementById('shortLink');
 
@@ -19,8 +18,7 @@ multipleUploadForm.addEventListener('submit', function (event) {
             const response = JSON.parse(xhr.responseText);
             console.log(response.link);
             shortLink.value = response.link;
-        }
-        else{
+        } else {
             shortLink.value = "ERROR. Try again later";
         }
     }
